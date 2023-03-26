@@ -34,6 +34,20 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'assetManager' => [
+            'bundles' => [
+                'kartik\daterange\DateRangePickerAsset' => [
+                    'depends' => [
+                        'kartik\base\WidgetAsset',
+                    ],
+                'kartik\form\ActiveFormAsset' => [
+                    'depends' => [
+                        'kartik\datetime\DateTimePickerAsset',
+                        'kartik\time\TimePickerAsset',
+                    ],
+                ],
+            ],
+        ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
             'viewPath' => '@app/mail',
