@@ -40,6 +40,7 @@ $config = [
                     'depends' => [
                         'kartik\base\WidgetAsset',
                     ],
+                ],
                 'kartik\form\ActiveFormAsset' => [
                     'depends' => [
                         'kartik\datetime\DateTimePickerAsset',
