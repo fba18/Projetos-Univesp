@@ -9,31 +9,17 @@ $config = [
     'bootstrap' => ['log'],
     'modules' => [
         'gridview' => [
-            'class' => '\kartik\grid\Module'
+            'class' => 'kartik\grid\Module',
         ],
         'admin' => [
-            'class' => 'dmstr\modules\admin\Module',
-        ],
+        'class' => 'almasaeed2010\modules\admin\Module',
+    ],
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
-        'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'cSpSecFLKmAqRMmdy7p7E8I80GmePyBu',
-        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
         'assetManager' => [
             'bundles' => [
                 'kartik\daterange\DateRangePickerAsset' => [
@@ -48,6 +34,20 @@ $config = [
                     ],
                 ],
             ],
+        ],
+        'request' => [
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => 'WtOsodSaCrVoRFGjzoLMXex-BztsGtGz',
+        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        'user' => [
+            'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
