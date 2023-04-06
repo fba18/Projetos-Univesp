@@ -20,7 +20,8 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "almasaeed2010/adminlte": "~3.2",
         "kartik-v/yii2-widgets": "^3.4",
-        "kartik-v/yii2-date-range": "^1.7"
+        "kartik-v/yii2-date-range": "^1.7",
+        "webvimark/module-user-management": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

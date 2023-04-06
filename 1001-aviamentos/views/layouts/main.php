@@ -9,6 +9,8 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use webvimark\modules\UserManagement\components\GhostMenu;
+use webvimark\modules\UserManagement\UserManagementModule;
 
 AppAsset::register($this);
 
@@ -37,11 +39,30 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
     echo Nav::widget([
+    //echo GhostMenu::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+            
+            [
+                'label' => 'Backend routes',
+                'items'=>UserManagementModule::menuItems()
+            ],
+            [
+                'label' => 'Frontend routes',
+                'items'=>[
+                    ['label'=>'Login', 'url'=>['/user-management/auth/login']],
+                    ['label'=>'Logout', 'url'=>['/user-management/auth/logout']],
+                    ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
+                    ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password']],
+                    ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery']],
+                    ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
+                ],
+            ],
+            
+            /*
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
                 : '<li class="nav-item">'
@@ -51,7 +72,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
-                    . '</li>'
+                    . '</li>'*/
+
+            
         ]
     ]);
     NavBar::end();
