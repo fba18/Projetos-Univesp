@@ -7,14 +7,9 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'modules' => [
-        'gridview' => [
-            'class' => 'kartik\grid\Module',
-        ],
-        'admin' => [
-            'class' => 'almasaeed2010\modules\admin\Module',
-        ],
-    ],
+    /*'modules' => [
+
+    ],*/
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -33,6 +28,11 @@ $config = [
                         'kartik\time\TimePickerAsset',
                     ],
                 ],
+                'yii\bootstrap4\BootstrapAsset' => [
+                    'css' => [],
+                ],
+                
+                
             ],
         ],
         'request' => [
@@ -110,6 +110,15 @@ $config = [
                         $event->action->controller->layout = 'loginLayout.php';
                     };
                 },
+        ],
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+        ],
+        'admin' => [
+            'class' => 'almasaeed2010\modules\admin\Module',
+        ],
+        'datecontrol' => [
+            'class' => 'kartik\daterange\Module',
         ],
     ],
 ];
