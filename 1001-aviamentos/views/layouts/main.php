@@ -1,107 +1,129 @@
 <?php
 
-/** @var yii\web\View $this */
-/** @var string $content */
+/* @var $this \yii\web\View */
+/* @var $content string */
+use yii\helpers\Html;
+
+
 
 use app\assets\AppAsset;
-use app\widgets\Alert;
-use yii\bootstrap4\Breadcrumbs;
-use yii\bootstrap\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use webvimark\modules\UserManagement\components\GhostMenu;
-use webvimark\modules\UserManagement\UserManagementModule;
 
 AppAsset::register($this);
 
+/*\hail812\adminlte3\assets\FontAwesomeAsset::register($this);
+\hail812\adminlte3\assets\AdminLteAsset::register($this);
 
-$this->registerCsrfMetaTags();
-$this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
-$this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
-$this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
-$this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+$this->registerCssFile('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
+
+$assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
+
+$publishedRes = Yii::$app->assetManager->publish('@vendor/hail812/yii2-adminlte3/src/web/js');
+$this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\hail812\adminlte3\assets\AdminLteAsset']);*/
+
 ?>
+
+<!--link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"-->
+
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
+<html lang="<?= Yii::$app->language ?>">
 <head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<?php $this->registerCsrfMetaTags() ?>-->
+    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
 </head>
-<body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
+<body class="hold-transition sidebar-mini sidebar-collapse" style="min-width:100%; "><!--  layout-fixed  -->
+    <?php $this->beginBody() ?>
 
-<header id="header">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
-    ]);
-    echo Nav::widget([
-    //echo GhostMenu::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            
-            [
-                'label' => 'Backend routes',
-                'items'=>UserManagementModule::menuItems()
-            ],
-            [
-                'label' => 'Frontend routes',
-                'items'=>[
-                    ['label'=>'Login', 'url'=>['/user-management/auth/login']],
-                    ['label'=>'Logout', 'url'=>['/user-management/auth/logout']],
-                    ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
-                    ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password']],
-                    ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery']],
-                    ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
-                ],
-            ],
-            
-            /*
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'*/
+        <div class="wrapper">
+            <?php
+            //<!-- Navbar -->
+            include_once('navbar.php');
+            //<!-- /.navbar -->
 
-            
-        ]
-    ]);
-    NavBar::end();
-    ?>
-</header>
+            //<!-- Main Sidebar Container -->
+            include_once('sidebar.php');
 
-<main id="main" class="flex-shrink-0" role="main">
-    <div class="container">
-        <?php if (!empty($this->params['breadcrumbs'])): ?>
-            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
-        <?php endif ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</main>
+            //<!-- Content Wrapper. Contains page content -->
+            include_once('content.php');
+            //<!-- /.content-wrapper -->
 
-<footer id="footer" class="mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            //<!-- Main Footer -->
+            include_once('footer.php');
+
+            //<!-- Control Sidebar -->
+            include_once('control-sidebar.php');
+            //<!-- /.control-sidebar -->
+
+            ?>
+
         </div>
-    </div>
-</footer>
 
-<?php $this->endBody() ?>
+
+    <?php $this->endBody() ?>
+
+    <style type="text/css">
+      .ui-datepicker table {
+          font-size: .8em;
+      }
+    </style>
+
+    <style type="text/css">
+        .nav-sidebar{
+            nav-legacy;
+      }
+    </style>
+
+
+
+<!-- TESTE 2 -->
+
+<!-- Bootstrap 4 -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- Select2 -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/select2/js/select2.full.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- Bootstrap4 Duallistbox -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- InputMask -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/moment/moment.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/inputmask/jquery.inputmask.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- date-range-picker -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/daterangepicker/daterangepicker.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- bootstrap color picker -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- Bootstrap Switch -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/bootstrap-switch/js/bootstrap-switch.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- BS-Stepper -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/bs-stepper/js/bs-stepper.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+<!-- dropzonejs -->
+<script><?php echo file_get_contents("../vendor/almasaeed2010/adminlte/plugins/dropzone/min/dropzone.min.js",  FILE_USE_INCLUDE_PATH) ?></script>
+
+
+
+
+<!-- Page specific script -->
+
+
+
+<!-- FIM TESTE 2 -->
+
 </body>
 </html>
 <?php $this->endPage() ?>

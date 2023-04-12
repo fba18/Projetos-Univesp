@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use webvimark\modules\UserManagement\components\GhostMenu;
+use webvimark\modules\UserManagement\UserManagementModule;
 
 class SiteController extends Controller
 {
@@ -66,7 +68,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(Yii::$app->user->isGuest){
+            return $this->render('index');
+        }
+        else{
+            //$this->redirect(['mensagem/index']);
+            return $this->render('index');
+        }
+        
     }
 
     /**

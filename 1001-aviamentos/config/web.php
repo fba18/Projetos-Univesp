@@ -6,15 +6,41 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
+    'layoutPath' => '@app/views/layouts',
     'bootstrap' => ['log'],
+    'language' => 'pt_BR',
+    'timezone' => 'America/Sao_Paulo',
     /*'modules' => [
 
     ],*/
     'aliases' => [
+        '@bower' => '@vendor/bower',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@adminlte/widgets'=>'@vendor/almasaeed2010/adminlte/yii2-widgets',
+
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php:d/m/Y',
+            'datetimeFormat' => 'php:d/m/Y H:i:s',
+            'timeFormart' => 'php:H:i:s',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => '.',
+            'currencyCode' => 'R$',
+            'locale' => 'pt_BR',
+            'defaultTimeZone' => 'America/Sao_Paulo'
+        ],
+
+        'formatterDB' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php:Y-m-d',
+            'datetimeFormat' => 'php:Y-m-d H:i:s',
+            'timeFormar' => 'php:H:i:s',
+            'decimalSeparator' => '.',
+        ],
+
         'assetManager' => [
             'bundles' => [
                 'kartik\daterange\DateRangePickerAsset' => [
@@ -72,6 +98,20 @@ $config = [
                 ],
             ],
         ],
+
+        'fullcalendar' => [
+            'class' => 'edofre\fullcalendar\FullcalendarScheduler',
+            'googleCalendar' => true
+        ],
+
+        /*'view' => [
+            'theme' => [
+                'pathMap' => [
+                   '@app/views' => '@vendor/hail812/yii2-adminlte3/src/views'
+                ],
+            ],
+        ],*/
+
         'db' => $db,
         /*
         'urlManager' => [
