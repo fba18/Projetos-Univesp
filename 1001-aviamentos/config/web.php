@@ -25,19 +25,18 @@ $config = [
             'class' => 'yii\i18n\Formatter',
             'dateFormat' => 'php:d/m/Y',
             'datetimeFormat' => 'php:d/m/Y H:i:s',
-            'timeFormart' => 'php:H:i:s',
+            'timeFormat' => 'php:H:i:s',
             'decimalSeparator' => ',',
             'thousandSeparator' => '.',
             'currencyCode' => 'R$',
-            'locale' => 'pt_BR',
-            'defaultTimeZone' => 'America/Sao_Paulo'
+            'locale' => 'pt-BR',
+            'defaultTimeZone' => 'America/Sao_Paulo',
         ],
-
         'formatterDB' => [
             'class' => 'yii\i18n\Formatter',
             'dateFormat' => 'php:Y-m-d',
             'datetimeFormat' => 'php:Y-m-d H:i:s',
-            'timeFormar' => 'php:H:i:s',
+            'timeFormat' => 'php:H:i:s',
             'decimalSeparator' => '.',
         ],
 
@@ -57,8 +56,8 @@ $config = [
                 'yii\bootstrap4\BootstrapAsset' => [
                     'css' => [],
                 ],
-                
-                
+
+
             ],
         ],
         'request' => [
@@ -140,7 +139,7 @@ $config = [
             // $: anchored to the end of the string
 
             //'passwordRegexp' => '^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
-            
+
 
             // Here you can set your handler to change layout for any controller or action
             // Tip: you can use this event in any module
@@ -151,8 +150,8 @@ $config = [
                     };
                 },
         ],
-        'gridview' => [
-            'class' => 'kartik\grid\Module',
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
         ],
         'admin' => [
             'class' => 'almasaeed2010\modules\admin\Module',
@@ -160,6 +159,7 @@ $config = [
         'datecontrol' => [
             'class' => 'kartik\daterange\Module',
         ],
+
     ],
 ];
 
