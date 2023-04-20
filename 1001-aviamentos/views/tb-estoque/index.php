@@ -77,11 +77,19 @@ $this->params['breadcrumbs'][] = $this->title;
                             'attribute' => 'estado_produto',
                             'enableSorting' => true,
                         ],
+                        /*'preco_produto' =>[
+                            'attribute' => 'preco_produto',
+                            'enableSorting' => true,
+                        ],*/
                         'preco_produto' => [
                             'attribute' => 'preco_produto',
                             'enableSorting' => true,
-                        ],
-
+                            'format' => ['raw'],
+                            //'label' => 'Preço Produto',
+                            'value' => function ($model) {
+                               return \Yii::$app->formatter->asCurrency($model->preco_produto, 'R$ ');
+                            }
+                         ],
 
 
                         /*[
