@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             // here comes the problem - instead of parent_region I need to have parent
                             'value' => function ($dataProvider) {
-                                return Html::a('<i class="bi bi-pencil"></i> Tratar',  Url::to("/tb_produto/update?id=".$dataProvider['num_produto'], true), ['class' => 'btn btn-danger btn-sm', 'role' => 'modal-remote','target'=>'_blank']);
+                                return Html::a('<i class="bi bi-pencil"></i> Tratar',  Url::to("/tb-produto/update?num_produto=".$dataProvider['num_produto'], true), ['class' => 'btn btn-danger btn-sm', 'role' => 'modal-remote','target'=>'_blank']);
                             }
                         ],
                     ],

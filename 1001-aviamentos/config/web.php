@@ -56,6 +56,11 @@ $config = [
                 'yii\bootstrap4\BootstrapAsset' => [
                     'css' => [],
                 ],
+                'kartik\select2\Select2Asset' => [
+                    'depends' => [
+                        'yii\web\YiiAsset',
+                    ],
+                ],
 
 
             ],
@@ -112,14 +117,15 @@ $config = [
         ],*/
 
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
             ],
         ],
-        */
+
     ],
     'params' => $params,
 

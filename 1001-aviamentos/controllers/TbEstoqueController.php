@@ -7,6 +7,9 @@ use app\models\TbEstoqueSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\TbProduto;
+use app\models\TbProdutoSearch;
+use Yii;
 
 /**
  * TbEstoqueController implements the CRUD actions for TbEstoque model.
@@ -27,6 +30,9 @@ class TbEstoqueController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access'=> [
+                    'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+                    ],
             ]
         );
     }
@@ -71,7 +77,8 @@ class TbEstoqueController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_estoque' => $model->id_estoque]);
+                Yii::$app->session->setFlash('error', 'Dados atualizados com sucesso!');
+                return $this->redirect(['update', 'id_estoque' => $model->id_estoque]);
             }
         } else {
             $model->loadDefaultValues();
@@ -93,13 +100,38 @@ class TbEstoqueController extends Controller
     {
         $model = $this->findModel($id_estoque);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+
+        /*if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id_estoque' => $model->id_estoque]);
         }
 
         return $this->render('update', [
             'model' => $model,
-        ]);
+        ]);*/
+
+        $produtoModel = TbProduto::findOne($model->num_produto);
+
+    if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        Yii::$app->session->setFlash('error', 'Dados atualizados com sucesso!');
+        return $this->redirect(['update', 'id' => $model->id_estoque]);
+        //return $this->redirect(['index']);
+    }
+
+    return $this->render('update', [
+        'model' => $model,
+        'produtoModel' => $produtoModel,
+    ]);
+
+    }
+
+    public  static function actionObterDados($num_produto){
+
+
+        $produtoModel = new TbProduto();
+        $data = $produtoModel->getProdutos2($num_produto);
+        //var_dump($data);
+       // echo $item['preco_produto'];
+        return json_encode($data);
     }
 
     /**
@@ -131,4 +163,7 @@ class TbEstoqueController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
 }

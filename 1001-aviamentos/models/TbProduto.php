@@ -14,32 +14,22 @@ use Yii;
  */
 class TbProduto extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return 'tb_produto';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
             [['num_produto', 'nome_produto', 'estado_produto', 'preco_produto'], 'required'],
-            [['num_produto'], 'integer'],
-            [['preco_produto'], 'number'],
-            [['nome_produto'], 'string', 'max' => 60],
-            [['estado_produto'], 'string', 'max' => 20],
+            [['num_produto'], 'string', 'max' => 10],
+            [['nome_produto', 'estado_produto'], 'string', 'max' => 255],
+            [['preco_produto'], 'safe'],
             [['num_produto'], 'unique'],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -49,4 +39,53 @@ class TbProduto extends \yii\db\ActiveRecord
             'preco_produto' => 'Preco Produto',
         ];
     }
+
+    public static function getProdutos()
+    {
+        $produtos = self::find()->all();
+        $data = [];
+        foreach ($produtos as $produto) {
+            $data[$produto->num_produto] = $produto->num_produto;
+            //$data[$produto->nome_produto] = $produto->nome_produto;
+            //$data[$produto->estado_produto] = $produto->estado_produto;
+            //$data[$produto->preco_produto] = $produto->preco_produto;
+        }
+        return $data;
+    }
+
+    public static function getProdutos2($num_produto)
+    {
+        $produtos = TbProduto::find()
+        ->where(['num_produto' => $num_produto])
+        ->one();
+
+        //var_dump($produtos);
+
+        //return $produtos;
+
+        $itens[] =[
+
+            $produtos['num_produto'],
+            $produtos['nome_produto'],
+            $produtos['estado_produto'],
+            $produtos['preco_produto'],
+        ];
+
+foreach($itens as $data){
+    return $data;
+}
+
+
+
+        /*$data = [];
+        foreach ($produtos as $produto) {
+            $data[$produto->num_produto] = $produto->num_produto;
+            $data[$produto->nome_produto] = $produto->nome_produto;
+            $data[$produto->estado_produto] = $produto->estado_produto;
+            $data[$produto->preco_produto] = $produto->preco_produto;
+        }
+        return $data;*/
+    }
+
+
 }

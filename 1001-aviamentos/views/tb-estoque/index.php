@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'footer'=>'',
                     ],
                     'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
+                        //['class' => 'yii\grid\SerialColumn'],
 
                         'id_estoque',
                         'num_produto',
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             // here comes the problem - instead of parent_region I need to have parent
                             'value' => function ($dataProvider) {
-                                return Html::a('<i class="bi bi-pencil"></i> Tratar',  Url::to("/tb_estoque/update?id=".$dataProvider['id_estoque'], true), ['class' => 'btn btn-danger btn-sm', 'role' => 'modal-remote','target'=>'_blank']);
+                                return Html::a('<i class="bi bi-pencil"></i> Tratar',  Url::to("/tb-estoque/update?id_estoque=".$dataProvider['id_estoque'], true), ['class' => 'btn btn-danger btn-sm', 'role' => 'modal-remote','target'=>'_blank']);
                             }
                         ],
                     ],

@@ -2,10 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\TbEstoque;
+use kartik\select2\Select2;
 
 /** @var yii\web\View $this */
 /** @var app\models\TbEstoqueSearch $model */
 /** @var yii\widgets\ActiveForm $form */
+
+$model = new TbEstoque();
 ?>
 
 <div class="tb-estoque-search">
@@ -34,13 +38,41 @@ use yii\widgets\ActiveForm;
 
                                 <div class="container-fluid w-auto row">
                                     <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'num_produto')->textInput()->label('Código Produto') ?>
+                                        <?php //$form->field($model, 'num_produto')->textInput()->label('Código Produto') ?>
+
+                                        <?= $form->field($model, 'num_produto')->widget(Select2::classname(), [
+                                            'data' => TbEstoque::getEstoques(),
+                                            'options' => ['placeholder' => 'Selecione um produto', 'id' => 'num_produto_select2'],
+                                            'pluginOptions' => [
+                                                'allowClear' => true,
+                                            ],
+
+
+                                        ])->label('Código Produto');
+
+
+
+                                        ?>
                                     </div>
-                                    <div class="col-lg-1 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'qtd_itens')->textInput()->label('Qtd Itens') ?>
-                                    </div>
+                                    <!--div class="col-lg-1 col-sm-12 col-xs-12 col-md-6">
+                                        < ?= $form->field($model, 'qtd_itens')->textInput()->label('Qtd Itens') ?>
+                                    </div-->
                                     <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'endereco_item')->textInput(['maxlength' => true])->label('Endereço Item') ?>
+                                        <?php //$form->field($model, 'endereco_item')->textInput(['maxlength' => true])->label('Endereço Item') ?>
+
+                                        <?= $form->field($model, 'endereco_item')->widget(Select2::classname(), [
+                                            'data' => TbEstoque::getEstoquesEnd(),
+                                            'options' => ['placeholder' => 'Selecione um endereço', 'id' => 'endereco_item_select2'],
+                                            'pluginOptions' => [
+                                                'allowClear' => true,
+                                            ],
+
+
+                                        ])->label('Endereço Produto');
+
+
+
+                                        ?>
                                     </div>
                                     <?php //$form->field($model, 'id_estoque') ?>
                                 </div>

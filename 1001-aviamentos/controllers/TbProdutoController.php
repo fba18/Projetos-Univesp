@@ -7,6 +7,8 @@ use app\models\TbProdutoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
+use Yii;
 
 /**
  * TbProdutoController implements the CRUD actions for TbProduto model.
@@ -27,6 +29,9 @@ class TbProdutoController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access'=> [
+                    'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+                    ],
             ]
         );
     }
@@ -71,7 +76,9 @@ class TbProdutoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'num_produto' => $model->num_produto]);
+                Yii::$app->session->setFlash('error', 'Dados salvos com sucesso!');
+                //return $this->redirect(['view', 'num_produto' => $model->num_produto]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -94,7 +101,9 @@ class TbProdutoController extends Controller
         $model = $this->findModel($num_produto);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'num_produto' => $model->num_produto]);
+            Yii::$app->session->setFlash('error', 'Dados atualizados com sucesso!');
+            return $this->redirect(['update', 'num_produto' => $model->num_produto]);
+            //return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -131,4 +140,5 @@ class TbProdutoController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

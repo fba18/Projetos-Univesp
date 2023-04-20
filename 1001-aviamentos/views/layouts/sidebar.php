@@ -113,7 +113,7 @@ use yii\helpers\Html;
                                 'items' =>
                                 [
                                     ['label' => 'Trocar Senha', 'icon' => 'bi bi-key', 'url' => ['/user-management/user/change-my-password']],
-                                    ['label' => 'Funcionário', 'icon' => 'bi bi-key', 'url' => ['/user-management/user']],
+                                    ['label' => 'Funcionário', 'icon' => 'bi bi-key', 'url' => ['/user-management/user/index']],
                                 ],
                             ],
 
@@ -122,8 +122,8 @@ use yii\helpers\Html;
                                 'icon' => 'bi bi-globe',
                                 'items' =>
                                 [
-                                    ['label' => 'Produto', 'icon' => 'bi bi-key', 'url' => ['/tb-produto']],
-                                    ['label' => 'Saldo Estoque', 'icon' => 'bi bi-key', 'url' => ['/tb-estoque']],
+                                    ['label' => 'Produto', 'icon' => 'bi bi-key', 'url' => ['/tb-produto/index']],
+                                    ['label' => 'Saldo Estoque', 'icon' => 'bi bi-key', 'url' => ['/tb-estoque/index']],
                                 ],
                             ],
 
