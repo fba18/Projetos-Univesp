@@ -68,7 +68,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'num_produto',
                         'nome_produto',
                         'estado_produto',
-                        'preco_produto',
+
+                        //'preco_produto',
+                        [
+                            'attribute' => 'preco_produto',
+                            'format' => ['raw'],
+                            //'label' => 'Preço Produto',
+                            'value' => function ($model) {
+                               return \Yii::$app->formatter->asCurrency($model->preco_produto, 'R$ ');
+                            }
+                         ],
                         /*[
                             'class' => ActionColumn::className(),
                             'urlCreator' => function ($action, TbProduto $model, $key, $index, $column) {

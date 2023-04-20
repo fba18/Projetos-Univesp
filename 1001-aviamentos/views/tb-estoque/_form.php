@@ -15,6 +15,10 @@ use yii\widgets\DatePicker;
 use app\models\TbProduto;
 use kartik\select2\Select2;
 
+use yii\helpers\ArrayHelper;
+use app\models\TbProdutoSearch;
+use yii\widgets\MaskedInput;
+
 //use yii;
 //use yii\grid\GridView;
 $produtoModel = new TbProduto();
@@ -74,7 +78,27 @@ $this->title = Yii::t('app', 'Saldo Estoque');
                                                     <?= $form->field($produtoModel, 'estado_produto')->textInput(['readonly'=> true, 'maxlength' => true, 'id' => 'estado_produto'])->label('Estado Produto') ?>
                                                 </div>
                                                 <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                                    <?= $form->field($produtoModel, 'preco_produto')->textInput(['readonly'=> true, 'id' => 'preco_produto'])->label('Preço Produto') ?>
+                                                    <?php //$form->field($produtoModel, 'preco_produto')->textInput(['readonly'=> true, 'id' => 'preco_produto'])->label('Preço Produto') ?>
+
+                                                    <?= $form->field($produtoModel, 'preco_produto')->widget(MaskedInput::className(), [
+                                                        'clientOptions' => [
+                                                            'alias' => 'currency',
+                                                            'prefix' => 'R$ ',
+                                                            'digits' => 2,
+                                                            'digitsOptional' => false,
+                                                            'radixPoint' => ',',
+                                                            'groupSeparator' => '.',
+                                                            'autoGroup' => true,
+                                                            'removeMaskOnSubmit' => true,
+                                                        ],
+                                                        'options' => ['style'=> ' ', 'class'=> 'input form-control ','readonly' => true, // Adiciona a opção para deixar somente leitura
+                                                        ]
+                                                    ])->label('Preço Produto') ?>
+                                                    <style>
+                                                        input[name="TbProduto[preco_produto]"].form-control {
+                                                            text-align: left;
+                                                        }
+                                                    </style>
                                                 <?php
 
 
@@ -96,6 +120,7 @@ $this->title = Yii::t('app', 'Saldo Estoque');
                                                                         var vl = JSON.parse(data);
                                                                         $('input#nome_produto').val(vl[1]);
                                                                         $('input#estado_produto').val(vl[2]);
+
                                                                         $('input#preco_produto').val('R$ ' + Number(vl[3]).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
                                                                         $('input#num_produto_estoque').val(vl[0]);
 
@@ -121,6 +146,24 @@ $this->title = Yii::t('app', 'Saldo Estoque');
                                                 </div>
                                                 <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
                                                     <?= $form->field($produtoModel, 'preco_produto')->textInput(['readonly'=> true, 'id' => 'preco_produto'])->label('Preço Produto') ?>
+                                                    <?php /*$form->field($model, 'preco_produto')->widget(MaskedInput::className(), [
+                                                        'clientOptions' => [
+                                                            'alias' => 'currency',
+                                                            'prefix' => 'R$ ',
+                                                            'digits' => 2,
+                                                            'digitsOptional' => false,
+                                                            'radixPoint' => ',',
+                                                            'groupSeparator' => '.',
+                                                            'autoGroup' => true,
+                                                            'removeMaskOnSubmit' => true,
+                                                        ],
+                                                        'options' => ['style'=> ' ', 'class'=> 'input form-control ','readonly' => true, ]
+                                                    ])->label('Preço Produto') */ ?>
+                                                    <!--style>
+                                                        input[name="TbProduto[preco_produto]"].form-control {
+                                                            text-align: left;
+                                                        }
+                                                    </style-->
                                                 </div>
                                             <?php
 

@@ -67,6 +67,23 @@ $this->params['breadcrumbs'][] = $this->title;
                         'num_produto',
                         'qtd_itens',
                         'endereco_item',
+
+
+                        'nome_produto' => [
+                            'attribute' => 'nome_produto',
+                            'enableSorting' => true,
+                        ],
+                        'estado_produto' => [
+                            'attribute' => 'estado_produto',
+                            'enableSorting' => true,
+                        ],
+                        'preco_produto' => [
+                            'attribute' => 'preco_produto',
+                            'enableSorting' => true,
+                        ],
+
+
+
                         /*[
                             'class' => ActionColumn::className(),
                             'urlCreator' => function ($action, TbEstoque $model, $key, $index, $column) {

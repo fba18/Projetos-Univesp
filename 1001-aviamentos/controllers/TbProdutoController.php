@@ -78,7 +78,8 @@ class TbProdutoController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 Yii::$app->session->setFlash('error', 'Dados salvos com sucesso!');
                 //return $this->redirect(['view', 'num_produto' => $model->num_produto]);
-                return $this->redirect(['index']);
+                return $this->redirect(['update', 'num_produto' => $model->num_produto]);
+                //return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();

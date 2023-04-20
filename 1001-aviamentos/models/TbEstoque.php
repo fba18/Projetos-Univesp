@@ -19,6 +19,11 @@ use yii\db\Expression;
  */
 class TbEstoque extends \yii\db\ActiveRecord
 {
+    public $nome_produto;
+    public $estado_produto;
+    public $preco_produto;
+
+
     /**
      * {@inheritdoc}
      */
@@ -47,9 +52,13 @@ class TbEstoque extends \yii\db\ActiveRecord
     {
         return [
             'id_estoque' => 'Id Estoque',
-            'num_produto' => 'Num Produto',
-            'qtd_itens' => 'Qtd Itens',
-            'endereco_item' => 'Endereco Item',
+            'num_produto' => 'Cód. Produto',
+            'qtd_itens' => 'Qtd. Itens',
+            'endereco_item' => 'Endereço Item',
+
+            'nome_produto' => 'Nome do Produto',
+            'estado_produto' => 'Estado do Produto',
+            'preco_produto' => 'Preço do Produto'
         ];
     }
 
@@ -71,5 +80,19 @@ class TbEstoque extends \yii\db\ActiveRecord
             $data[$estoque->endereco_item] = $estoque->endereco_item;
         }
         return $data;
+    }
+
+    public function getProduto()
+    {
+        return $this->hasOne(TbProduto::className(), ['num_produto' => 'num_produto']);
+    }
+
+    public function fields()
+    {
+        $fields = parent::fields();
+        $fields[] = 'nome_produto';
+        $fields[] = 'estado_produto';
+        $fields[] = 'preco_produto';
+        return $fields;
     }
 }

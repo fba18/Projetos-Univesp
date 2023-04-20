@@ -12,6 +12,11 @@ use yii\widgets\Pjax;
 use kartik\export\ExportMenu;
 use kartik\editable\Editable;
 use yii\widgets\DatePicker;
+
+use yii\helpers\ArrayHelper;
+use app\models\TbProdutoSearch;
+use yii\widgets\MaskedInput;
+
 //use yii;
 //use yii\grid\GridView;
 
@@ -50,7 +55,24 @@ use yii\widgets\DatePicker;
                                             <?= $form->field($model, 'estado_produto')->textInput(['maxlength' => true])->label('Estado Produto') ?>
                                         </div>
                                         <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                            <?= $form->field($model, 'preco_produto')->textInput()->label('Preço Produto') ?>
+                                            <?= $form->field($model, 'preco_produto')->widget(MaskedInput::className(), [
+                                                'clientOptions' => [
+                                                    'alias' => 'currency',
+                                                    'prefix' => 'R$ ',
+                                                    'digits' => 2,
+                                                    'digitsOptional' => false,
+                                                    'radixPoint' => ',',
+                                                    'groupSeparator' => '.',
+                                                    'autoGroup' => true,
+                                                    'removeMaskOnSubmit' => true,
+                                                ],
+                                                'options' => ['style'=> ' ', 'class'=> 'input form-control ']
+                                            ])->label('Preço Produto') ?>
+                                            <style>
+                                                input[name="TbProduto[preco_produto]"].form-control {
+                                                    text-align: left;
+                                                }
+                                            </style>
                                         </div>
                                         <div class="form-group col-lg-1 col-sm-12 col-xs-12 col-md-6 ">
                                             <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>

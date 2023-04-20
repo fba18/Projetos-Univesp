@@ -45,7 +45,30 @@ class TbEstoqueController extends Controller
     public function actionIndex()
     {
         $searchModel = new TbEstoqueSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        /*$dataProvider = $searchModel->search($this->request->queryParams);
+
+        */
+
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => TbEstoque::find()
+                ->select(['tb_estoque.*', 'tb_produto.nome_produto', 'tb_produto.estado_produto', 'tb_produto.preco_produto'])
+                ->leftJoin('tb_produto', 'tb_estoque.num_produto = tb_produto.num_produto'),
+            'sort' => [
+                'attributes' => [
+
+                    'id_estoque',
+                    'num_produto',
+                    'qtd_itens',
+                    'endereco_item',
+                    'nome_produto',
+                    'estado_produto',
+                    'preco_produto',
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
