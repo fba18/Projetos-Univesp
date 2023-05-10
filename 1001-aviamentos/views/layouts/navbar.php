@@ -54,7 +54,7 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
                         echo '
 
                             <!-- Navbar -->
-                                <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color:#348cb3;border-bottom: solid 10px #16203d;">
+                                <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color:#0879A6;">
 
                                     <!-- Left navbar links -->
                                     <ul class="navbar-nav">
@@ -110,8 +110,11 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
                                         <!-- Notifications Dropdown Menu -->
 
 
+
+
+
                                         <li class="nav-item">'.
-                                        Html::a('<i class="fas fa-sign-out-alt" style="color:#FFFFFF"></i>', ['site/logout'], ['data-method' => 'post', 'class' => 'nav-link']).'
+                                        (strpos(Yii::$app->request->url, 'user-management') !== false ? Html::a('<i class="fas fa-sign-out-alt" style="color:#FFFFFF"></i>', ['../site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) : Html::a('<i class="fas fa-sign-out-alt" style="color:#FFFFFF"></i>', ['site/logout'], ['data-method' => 'post', 'class' => 'nav-link'])).'
                                         </li>
 
 

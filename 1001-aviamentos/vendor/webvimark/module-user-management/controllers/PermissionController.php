@@ -73,7 +73,7 @@ class PermissionController extends AdminDefaultController
 		Permission::addChildren($item->name, $toAdd);
 		Permission::removeChildren($item->name, $toRemove);
 
-		Yii::$app->session->setFlash('success', UserManagementModule::t('back', 'Saved'));
+		Yii::$app->session->setFlash('success', UserManagementModule::t('back', 'Salvo'));
 
 		return $this->redirect(['view', 'id'=>$id]);
 	}
@@ -106,7 +106,7 @@ class PermissionController extends AdminDefaultController
 
 		AuthHelper::invalidatePermissions();
 
-		Yii::$app->session->setFlash('success', UserManagementModule::t('back', 'Saved'));
+		Yii::$app->session->setFlash('success', UserManagementModule::t('back', 'Salvo'));
 
 		return $this->redirect(['view', 'id'=>$id]);
 	}
@@ -165,4 +165,4 @@ class PermissionController extends AdminDefaultController
 
 		return $this->renderIsAjax('update', compact('model'));
 	}
-} 
+}

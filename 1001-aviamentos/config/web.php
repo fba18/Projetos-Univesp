@@ -159,12 +159,12 @@ $config = [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ],
-        'admin' => [
+        /*'admin' => [
             'class' => 'almasaeed2010\modules\admin\Module',
-        ],
-        'datecontrol' => [
+        ],*/
+        /*'datecontrol' => [
             'class' => 'kartik\daterange\Module',
-        ],
+        ],*/
 
     ],
 ];

@@ -357,7 +357,7 @@ class AuthController extends BaseController
 		{
 			throw new NotFoundHttpException(UserManagementModule::t('front', 'Token not found. It may be expired'));
 		}
-		
+
 		$user->email_confirmed = 1;
 		$user->removeConfirmationToken();
 		$user->save(false);

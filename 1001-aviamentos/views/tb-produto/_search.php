@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\TbProduto;
+use kartik\select2\Select2;
 
 /** @var yii\web\View $this */
 /** @var app\models\TbProdutoSearch $model */
@@ -33,16 +35,56 @@ use yii\widgets\ActiveForm;
 
                                 <div class="container-fluid w-auto row">
                                     <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'num_produto')->label('Código Produto') ?>
+                                        <?php //$form->field($model, 'num_produto')->label('Código Produto') ?>
+                                        <?= $form->field($model, 'num_produto')->widget(Select2::classname(), [
+                                            'data' => TbProduto::getProdutos(),
+                                            'options' => ['placeholder' => 'Selecione cód produto', 'id' => 'num_produto_select2'],
+                                            'pluginOptions' => [
+                                                'allowClear' => true,
+                                            ],
+
+
+                                            ])->label('Código Produto');
+                                        ?>
                                     </div>
                                     <div class="col-lg-4 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'nome_produto')->textInput(['maxlength' => true])->label('Nome Produto') ?>
+                                        <?php // $form->field($model, 'nome_produto')->textInput(['maxlength' => true])->label('Nome Produto') ?>
+                                        <?= $form->field($model, 'nome_produto')->widget(Select2::classname(), [
+                                            'data' => TbProduto::getProdutosNome(),
+                                            'options' => ['placeholder' => 'Selecione um produto', 'id' => 'endereco_item_select2'],
+                                            'pluginOptions' => [
+                                                'allowClear' => true,
+                                            ],
+
+
+                                            ])->label('Nome Produto');
+                                        ?>
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'estado_produto')->textInput(['maxlength' => true])->label('Estado Produto') ?>
+                                        <?php //$form->field($model, 'estado_produto')->textInput(['maxlength' => true])->label('Estado Produto') ?>
+                                        <?= $form->field($model, 'estado_produto')->widget(Select2::classname(), [
+                                            'data' => TbProduto::getProdutosEstadoProd(),
+                                            'options' => ['placeholder' => 'Selecione estado', 'id' => 'estado_produto_select2'],
+                                            'pluginOptions' => [
+                                                'allowClear' => true,
+                                            ],
+
+
+                                            ])->label('Estado Produto');
+                                        ?>
                                     </div>
                                     <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                        <?= $form->field($model, 'preco_produto')->textInput()->label('Preço Produto') ?>
+                                        <?php //$form->field($model, 'preco_produto')->textInput()->label('Preço Produto') ?>
+                                        <?= $form->field($model, 'preco_produto')->widget(Select2::classname(), [
+                                            'data' => TbProduto::getProdutosPreco(),
+                                            'options' => ['placeholder' => 'Selecione preço', 'id' => 'preco_produto_select2'],
+                                            'pluginOptions' => [
+                                                'allowClear' => true,
+                                            ],
+
+
+                                            ])->label('Preço Produto');
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="container-fluid w-auto row form-group">

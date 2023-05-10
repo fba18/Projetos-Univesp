@@ -90,6 +90,35 @@ class TbProduto extends \yii\db\ActiveRecord
         return $data;
     }
 
+    public static function getProdutosNome()
+    {
+        $produtos = self::find()->all();
+        $data = [];
+        foreach ($produtos as $produto) {
+            $data[$produto->nome_produto] = $produto->nome_produto;
+        }
+        return $data;
+    }
+    public static function getProdutosEstadoProd()
+    {
+        $produtos = self::find()->all();
+        $data = [];
+        foreach ($produtos as $produto) {
+            $data[$produto->estado_produto] = $produto->estado_produto;
+        }
+        return $data;
+    }
+
+    public static function getProdutosPreco()
+    {
+        $produtos = self::find()->all();
+        $data = [];
+        foreach ($produtos as $produto) {
+            $data[$produto->preco_produto] = $produto->preco_produto;
+        }
+        return $data;
+    }
+
     public static function getProdutos2($num_produto)
     {
         $produtos = TbProduto::find()

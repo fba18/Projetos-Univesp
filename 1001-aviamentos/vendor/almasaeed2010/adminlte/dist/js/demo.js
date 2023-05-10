@@ -147,7 +147,7 @@
     $sidebar_collapsed_checkbox.prop('checked', true)
   })
   $(document).on('shown.lte.pushmenu', '[data-widget="pushmenu"]', function () {
-    $sidebar_collapsed_checkbox.prop('checked', false)
+    $sidebar_collapsed_checkbox.prop('checked', true)
   })
 
   var $sidebar_fixed_checkbox = $('<input />', {

@@ -2,14 +2,14 @@
 
 /** @var yii\web\View $this */
 
-$this->title = '1001 Aviamentos';
+$this->title = '';
 ?>
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Em construção</h1>
+        <h1 class="display-6"><strong>1001 Aviamentos</h1></strong>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead"></p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
@@ -18,7 +18,7 @@ $this->title = '1001 Aviamentos';
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2>Sobre Nós</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip

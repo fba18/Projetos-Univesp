@@ -6,18 +6,20 @@ use yii\helpers\Html;
 
 ?>
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#001040;">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#0879A6;">
     <!-- Brand Logo -->
-    <a href="../index" class="brand-link" style='font-family:calibri; color:#fcfc30;'>
-        <img src="/" style="margin-left:9px;margin-right:12px" width='40px'>
-        <b style='font-size:30px;'>
-            1001
+    <a href="#" class="brand-link" style='font-family:calibri; color:#ffffff;'>
+
+        <img src="/uploads/imagens/logo.png" alt="1001 Aviamentos" style="margin-left:5px;margin-right:12px" width='50px' >
+        <b style='font-size:20px;'>
+            1001 Aviamentos
         </b>
+
     </a>
 
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" >
         <!-- Sidebar user panel (optional) -->
         <!--div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
@@ -46,25 +48,11 @@ use yii\helpers\Html;
         <nav class="mt-2">
             <?php
             if (!Yii::$app->user->isGuest && Yii::$app->user->identity->superadmin == 0) {
-                if (Yii::$app->user->identity->funcao <> 'Externo 3corp') {
+                if (Yii::$app->user->identity->tipo_funcionario <> 'Gestor') {
                     echo \hail812\adminlte\widgets\Menu::widget(
                         [
                             'items' =>
                             [
-                                /*[
-                                        'label' => 'Starter Pages',
-                                        'icon' => 'tachometer-alt',
-                                        'badge' => '<span class="right badge badge-info">2</span>',
-                                        'items' => [
-                                            ['label' => 'Active Page', 'url' => ['site/index'], 'iconStyle' => 'far'],
-                                            ['label' => 'Inactive Page', 'iconStyle' => 'far'],
-                                        ]
-                                    ],*/
-
-
-
-
-
                                 [
                                     'label' => 'Geral',
                                     'icon' => 'bi bi-globe',
@@ -74,23 +62,32 @@ use yii\helpers\Html;
                                     ],
                                 ],
 
+                                [
+                                    'label' => 'Estoque',
+                                    'icon' => 'bi bi-boxes',
+                                    'items' =>
+                                    [
+                                        ['label' => 'Saldo Estoque', 'icon' => 'bi bi-box2', 'url' => ['/tb-estoque/index']],
+                                    ],
+                                ],
+
                             ],
                         ]
                     );
 
-                    //caso não for externo imprime o menu acima
+                    //caso não for operacional imprime o menu acima
                 } else {
                     echo \hail812\adminlte\widgets\Menu::widget(
                         [
                             'items' =>
                             [
                                 [
-                                    'label' => 'Controle de Termos de Instalação e Desinstalação',
+                                    'label' => 'Visitante',
                                     'icon' => 'far',
                                     'items' =>
                                     [
                                         [
-                                            'label' => 'Listagem', 'url' => ['#'],
+                                            'label' => 'Visitante', 'url' => ['#'],
                                         ],
                                     ],
 
@@ -113,17 +110,17 @@ use yii\helpers\Html;
                                 'items' =>
                                 [
                                     ['label' => 'Trocar Senha', 'icon' => 'bi bi-key', 'url' => ['/user-management/user/change-my-password']],
-                                    ['label' => 'Funcionário', 'icon' => 'bi bi-key', 'url' => ['/user-management/user/index']],
+                                    ['label' => 'Funcionário', 'icon' => 'bi bi-people-fill', 'url' => ['/user-management/user/index']],
                                 ],
                             ],
 
                             [
                                 'label' => 'Estoque',
-                                'icon' => 'bi bi-globe',
+                                'icon' => 'bi bi-boxes',
                                 'items' =>
                                 [
-                                    ['label' => 'Produto', 'icon' => 'bi bi-key', 'url' => ['/tb-produto/index']],
-                                    ['label' => 'Saldo Estoque', 'icon' => 'bi bi-key', 'url' => ['/tb-estoque/index']],
+                                    ['label' => 'Produto', 'icon' => 'bi bi-cart-plus', 'url' => ['/tb-produto/index']],
+                                    ['label' => 'Saldo Estoque', 'icon' => 'bi bi-box2', 'url' => ['/tb-estoque/index']],
                                 ],
                             ],
 

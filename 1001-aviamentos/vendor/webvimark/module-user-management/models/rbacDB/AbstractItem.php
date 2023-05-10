@@ -267,7 +267,10 @@ abstract class AbstractItem extends ActiveRecord
 
 	public static function beforeRemoveChildren($parentName, $childrenNames)
 	{
+		//$event = new AbstractItemEvent(compact('parentName', 'childrenNames', 'throwException'));
+		//$event->trigger(get_called_class(), self::EVENT_BEFORE_REMOVE_CHILDREN, $event);
+		$throwException = false; // Definindo a variável antes da chamada do método
 		$event = new AbstractItemEvent(compact('parentName', 'childrenNames', 'throwException'));
-		$event->trigger(get_called_class(), self::EVENT_BEFORE_REMOVE_CHILDREN, $event);
+    	$event->trigger(get_called_class(), self::EVENT_BEFORE_REMOVE_CHILDREN, $event);
 	}
-} 
+}

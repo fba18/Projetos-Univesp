@@ -9,13 +9,14 @@ use yii\helpers\Html;
  * @var webvimark\modules\UserManagement\models\forms\ChangeOwnPasswordForm $model
  */
 
-$this->title = UserManagementModule::t('back', 'Alterar Senha');
+$this->title = UserManagementModule::t('back', '');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="content">
 
 
-	<div class="change-own-password">
+	<div class="change-own-password" width="200px">
 
 		<?php if ( Yii::$app->session->hasFlash('success') ): ?>
 			<div class="alert alert-success text-center">
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			]); ?>
 
 
-				<section class="content">
+				<section class="content" style='font-family:calibri; padding: 20px 0 0 400px'>
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-md-6">
@@ -40,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 									<div class="card-header">
 										<h3 class="card-title">
 										<i class="fas fa-edit"></i>
-										<h4>&nbspAlterar Senha:</h4>
+										<h4><strong> &nbsp Alterar Senha:</strong></h4>
 										</h3>
 									</div>
 
@@ -69,6 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
 										</div>
 										<div class="container-fluid w-auto row">
 											<div class="form-group col-lg-6 col-sm-12 col-xs-12 col-md-6">
+
 												<?= Html::submitButton('<span class="glyphicon glyphicon-ok"></span> ' . UserManagementModule::t('back', 'Salvar'),['class' => 'btn btn-primary']) ?>
 											</div>
 										</div>

@@ -204,9 +204,12 @@ class User extends UserIdentity
 	public static function getStatusList()
 	{
 		return array(
-			self::STATUS_ACTIVE   => UserManagementModule::t('back', 'Active'),
-			self::STATUS_INACTIVE => UserManagementModule::t('back', 'Inactive'),
-			self::STATUS_BANNED   => UserManagementModule::t('back', 'Banned'),
+			//self::STATUS_ACTIVE   => UserManagementModule::t('back', 'Active'),
+			self::STATUS_ACTIVE   => UserManagementModule::t('back', 'Ativo'),
+			//self::STATUS_INACTIVE => UserManagementModule::t('back', 'Inactive'),
+			self::STATUS_INACTIVE => UserManagementModule::t('back', 'Inativo'),
+			//self::STATUS_BANNED   => UserManagementModule::t('back', 'Banned'),
+			self::STATUS_BANNED   => UserManagementModule::t('back', 'Banido'),
 		);
 	}
 
@@ -256,7 +259,7 @@ class User extends UserIdentity
 			[['tipo_funcionario'], 'string', 'max' => 30],
 			[['data_nascimento'], 'safe'],
 
-			[['status', 'email_confirmed'], 'integer'],
+			[['status', 'email_confirmed', 'superadmin'], 'integer'],
 
 			['email', 'email'],
 			['email', 'validateEmailConfirmedUnique'],

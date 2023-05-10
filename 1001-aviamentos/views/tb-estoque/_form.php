@@ -124,6 +124,12 @@ $this->title = Yii::t('app', 'Saldo Estoque');
                                                                         $('input#preco_produto').val('R$ ' + Number(vl[3]).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
                                                                         $('input#num_produto_estoque').val(vl[0]);
 
+                                                                        //Para vincular o código do produto à ID Estoque
+                                                                        var num_produto_estoque = $('#num_produto_estoque').val();
+                                                                        var id_estoque = $('#id_estoque');
+
+                                                                        id_estoque.val(num_produto_estoque);
+
                                                                     });
                                                                 } else {
                                                                     alert('Erro');
@@ -193,6 +199,11 @@ $this->title = Yii::t('app', 'Saldo Estoque');
                                 <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6">
 
                                     <div class="container-fluid w-auto row">
+                                    <?= $form->field($model, 'id_estoque')->textInput([
+                                            'type'=>"hidden",
+                                            'id' => 'id_estoque',
+                                        ])->label('')
+                                    ?>
                                         <!--div class="col-lg-2 col-sm-12 col-xs-12 col-md-6"-->
                                             <!--?= $form->field($model, 'id_estoque')->textInput() ?-->
                                             <?= $form->field($model, 'num_produto')->textInput(['type'=>"hidden",'id' => 'num_produto_estoque'])->label('') ?>
