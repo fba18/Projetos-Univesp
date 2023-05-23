@@ -52,7 +52,11 @@ use yii\widgets\MaskedInput;
                                             <?= $form->field($model, 'nome_produto')->textInput(['maxlength' => true])->label('Nome Produto') ?>
                                         </div>
                                         <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
-                                            <?= $form->field($model, 'estado_produto')->textInput(['maxlength' => true])->label('Estado Produto') ?>
+                                            <?php //$form->field($model, 'estado_produto')->textInput(['maxlength' => true])->label('Estado Produto') ?>
+                                            <?= $form->field($model, 'estado_produto')->dropDownList([
+                                                'Novo' => 'Novo',
+                                                'Usado' => 'Usado',
+                                            ], ['prompt' => 'Selecione uma opção']) ?>
                                         </div>
                                         <div class="col-lg-2 col-sm-12 col-xs-12 col-md-6">
                                             <?= $form->field($model, 'preco_produto')->widget(MaskedInput::className(), [

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				'dataProvider' => $dataProvider,
 				'filterModel' => $searchModel,
 				'responsive'=>true,
-                'resizableColumns'=>true,
+                'resizableColumns'=>false,
                 'responsiveWrap' => false,
                 'striped'=>true,
                 'containerOptions'=>['style'=>'overflow: auto; font-size:1.0em;',],
