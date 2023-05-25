@@ -27,6 +27,9 @@ class TbFuncionarioController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+                'access'=> [
+                    'class' => 'webvimark\modules\UserManagement\components\GhostAccessControl',
+                    ],
             ]
         );
     }

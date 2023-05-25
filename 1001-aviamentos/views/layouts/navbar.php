@@ -32,8 +32,57 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
                         <!-- Left navbar links -->
                         <ul class="navbar-nav"><br><br></ul>
 
-                        <img src="/" style="margin-right:2%;" width="35px">
-                        <h4 style="color:yellow;"> 1001 AVIAMENTOS </h4>
+                        <!--img src="/" style="margin-right:2%;" width="35px">
+                        <h4 style="color:yellow;"> 1001 AVIAMENTOS </h4-->
+                        <ul class="navbar-nav ml-auto">
+
+                        <!-- Navbar Search -->
+                        <!--li class="nav-item">
+
+                            <a class="nav-link" data-widget="navbar-search" href="#" role="button ">
+                                <i class="fas fa-search" style="color:#FFFFFF"></i>
+                            </a>
+
+                            <div class="navbar-search-block">
+
+                                <form class="form-inline">
+                                    <div class="input-group input-group-sm">
+                                        <input class="form-control form-control-navbar" style="background-color:#fff;border-color:#FFFFFF" type="search" placeholder="Search" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-navbar" type="submit">
+                                                <i class="fas fa-search" style="color:#FFFFFF"></i>
+                                            </button>
+                                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                                <i class="fas fa-times" style="color:#FFFFFF"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </li-->
+
+
+                        <!-- Messages Dropdown Menu -->
+
+
+                        <!-- Notifications Dropdown Menu -->
+
+
+
+
+
+                        <li class="nav-item">'.
+                        (strpos(Yii::$app->request->url, 'user-management') !== false ? Html::a('<i class="fas fa-sign-out-alt" style="color:#FFFFFF"></i>', ['../site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) : Html::a('<i class="fas fa-sign-out-alt" style="color:#FFFFFF"></i>', ['site/logout'], ['data-method' => 'post', 'class' => 'nav-link'])).'
+                        </li>
+
+
+
+
+
+
+                    </ul>
 
                         '
 
